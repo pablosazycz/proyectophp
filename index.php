@@ -8,7 +8,7 @@
 		$ape = $_POST["ape"];
 		return $nom . ' ' . $ape;
 	}
-
+$fecha_nac=null;
 	function anios($nac)
 	{
 		$nac = new DateTime($_POST["fnac"]);
@@ -21,7 +21,7 @@
 	$ingreso = date('1990-03-20');
 	$salida = date('2023-03-23');
 
-	function dias_pasados($fecha_inicial, $fecha_final)
+	/* function dias_pasados($fecha_inicial, $fecha_final)
 	{
 
 		$fecha_inicial = date_create($_POST["fnac"]);
@@ -37,7 +37,7 @@
 
 	}
 
-
+ */
 $ip=$_SERVER['REMOTE_ADDR'];
 $apiKey='dae74d852e3b4dd7bf474a4f63634cac';
 $location= get_geolocation($apiKey,$ip);
@@ -77,7 +77,7 @@ function get_geolocation($apiKey, $ip, $lang = "en", $fields = "*", $excludes = 
 </head>
 
 <body>
-	<div class="container">
+	<div class="container-fluid">
 		<h1 class="fst-italic alert alert-success text-center">Fundacion Telefónica</h1>
 	</div>
 
@@ -108,7 +108,22 @@ function get_geolocation($apiKey, $ip, $lang = "en", $fields = "*", $excludes = 
 	</div>
 	<br>
 
-<div class="container">
+
+
+
+
+	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="exampleModalLabel">Bienvenido!</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					Hola <?php echo saludo($nombre, $apellido) ?> gracias por visitarnos!
+					Vas a  cumplir <?php echo anios($fecha_nac); ?>!
+					Nos estas visitado de:
+					<div class="container-fluid"> //localizacion por ip
 	<div class="row">
 		<div class="col-12">
 			<h3 class="text-center">Tu Ip es: <?php echo $decodedLocation['ip'] ?> </h3>
@@ -151,29 +166,6 @@ function get_geolocation($apiKey, $ip, $lang = "en", $fields = "*", $excludes = 
 		</div>
 	</div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h1 class="modal-title fs-5" id="exampleModalLabel">Bienvenido!</h1>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					Hola <?php echo saludo($nombre, $apellido) ?> gracias por visitarnos!
-					Faltan <?php echo dias_pasados($salida, $ingreso) ?> días para cumplir <?php echo anios($fecha_nac); ?>!
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
