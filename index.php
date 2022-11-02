@@ -1,3 +1,67 @@
+<?php
+	$nombre = '';
+	$apellido = '';
+
+	function saludo($nom, $ape)
+	{
+		$nom = $_POST["nom"];
+		$ape = $_POST["ape"];
+		return $nom . ' ' . $ape;
+	}
+
+	function anios($nac)
+	{
+		$nac = new DateTime($_POST["fnac"]);
+		$hoy = date_create("now");
+		$hoy2 = date_add($hoy, date_interval_create_from_date_string("1 year"));
+		$edad = $hoy2->diff($nac);
+		return ($edad)->format('%y años');
+	}
+
+	$ingreso = date('1990-03-20');
+	$salida = date('2023-03-23');
+
+	function dias_pasados($fecha_inicial, $fecha_final)
+	{
+
+		$fecha_inicial = date_create($_POST["fnac"]);
+		$hoy = date_create("now");
+		$hoy2 = date_add($hoy, date_interval_create_from_date_string('1 year'));
+
+		$edad = date_diff($hoy2, $fecha_inicial);
+		$cant = date_add($fecha_inicial, date_interval_create_from_date_string('33 years'));
+		$falta = date_diff($hoy, $cant);
+		echo $falta->days . " days";
+		echo date('Y-m-d');
+		echo date("Y-m-d",time());
+
+	}
+
+
+$ip=$_SERVER['REMOTE_ADDR'];
+$apiKey='dae74d852e3b4dd7bf474a4f63634cac';
+$location= get_geolocation($apiKey,$ip);
+$decodedLocation =json_decode($location,true);
+	
+
+function get_geolocation($apiKey, $ip, $lang = "en", $fields = "*", $excludes = "") {
+	$url = "https://api.ipgeolocation.io/ipgeo?apiKey=".$apiKey."&ip=".$ip."&lang=".$lang."&fields=".$fields."&excludes=".$excludes;
+	$cURL = curl_init();
+
+	curl_setopt($cURL, CURLOPT_URL, $url);
+	curl_setopt($cURL, CURLOPT_HTTPGET, true);
+	curl_setopt($cURL, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($cURL, CURLOPT_HTTPHEADER, array(
+		'Content-Type: application/json',
+		'Accept: application/json',
+		'User-Agent: '.$_SERVER['HTTP_USER_AGENT']
+	));
+
+	return curl_exec($cURL);
+}
+
+	?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -42,66 +106,63 @@
 		</div>
 		<div class="col-4"></div>
 	</div>
+	<br>
 
-	<?php
-	$nombre = '';
-	$apellido = '';
-
-
-	
-
-
-
-	function saludo($nom, $ape)
-	{
-		$nom = $_POST["nom"];
-		$ape = $_POST["ape"];
-		return $nom . ' ' . $ape;
-	}
-
-
-
-	function anios($nac)
-	{
-		$nac = new DateTime($_POST["fnac"]);
-		$hoy = date_create("now");
-		$hoy2 = date_add($hoy, date_interval_create_from_date_string("1 year"));
-		$edad = $hoy2->diff($nac);
-		return ($edad)->format('%y años');
-	}
-
-	$ingreso = date('1990-03-20');
-	$salida = date('2023-03-23');
-
-	function dias_pasados($fecha_inicial, $fecha_final)
-	{
-
-		$fecha_inicial = date_create($_POST["fnac"]);
-		$hoy = date_create("now");
-		$hoy2 = date_add($hoy, date_interval_create_from_date_string('1 year'));
-
-		$edad = date_diff($hoy2, $fecha_inicial);
-		$cant = date_add($fecha_inicial, date_interval_create_from_date_string('33 years'));
-		$falta = date_diff($hoy, $cant);
-		echo $falta->days . " days";
-		echo date('Y-m-d');
-		echo date("Y-m-d",time());
-
-	}
-
-
-$ip=$_SERVER['REMOTE_ADDR'];
-echo $ip;
-
-$ch=curl_init();
-curl_setopt($ch,CURLOPT_URL,'https://api.ipgeolocation.io/ipgeo?apiKey=dae74d852e3b4dd7bf474a4f63634cac&ip='.$ip);
-curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
-$out=curl_exec($ch);
-echo ($out);
-curl_close($ch);
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+			<h3 class="text-center">Tu Ip es: <?php echo $decodedLocation['ip'] ?> </h3>
+		</div>
+		<br>
+		<hr>
+		<div class="col-12">
+			<table class="table text-center">
+				<tr>
+				<th>Continente</th>
+				<td><?php echo $decodedLocation['continent_name'] ?></td>
+				</tr>
+				<tr>
+				<th>Pais</th>
+				<td><?php echo $decodedLocation['country_name'] ?></td>
+				</tr>
+				<tr>
+				<th>Provincia</th>
+				<td><?php echo $decodedLocation['state_prov'] ?></td>
+				</tr>
+				<tr>
+				<th>Ciudad</th>
+				<td><?php echo $decodedLocation['city'] ?></td>
+				</tr>
+				<tr>
+				<th>Latitud</th>
+				<td><?php echo $decodedLocation['latitude'] ?></td>
+				</tr>
+				<tr>
+				<th>Longitud</th>
+				<td><?php echo $decodedLocation['longitude'] ?></td>
+				</tr>
+				<th>Bandera</th>
+				<td> <img src="<?php echo $decodedLocation['country_flag'] ?>" alt="" srcset=""> </td>
+				</tr>
+				<th>Te conectas con</th>
+				<td> <?php echo $decodedLocation['isp']?> </td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
 
 
-	?>
+
+
+
+
+
+
+
+
+
+
 
 	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
