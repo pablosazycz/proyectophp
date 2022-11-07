@@ -22,23 +22,7 @@ function anios($nac)
 $ingreso = date('1990-03-20');
 $salida = date('2023-03-23');
 
-/* function dias_pasados($fecha_inicial, $fecha_final)
-	{
 
-		$fecha_inicial = date_create($_POST["fnac"]);
-		$hoy = date_create("now");
-		$hoy2 = date_add($hoy, date_interval_create_from_date_string('1 year'));
-
-		$edad = date_diff($hoy2, $fecha_inicial);
-		$cant = date_add($fecha_inicial, date_interval_create_from_date_string('33 years'));
-		$falta = date_diff($hoy, $cant);
-		echo $falta->days . " days";
-		echo date('Y-m-d');
-		echo date("Y-m-d",time());
-
-	}
-
- */
 $ip = $_SERVER['REMOTE_ADDR'];
 $apiKey = 'dae74d852e3b4dd7bf474a4f63634cac';
 $location = get_geolocation($apiKey, $ip);
@@ -72,47 +56,119 @@ function get_geolocation($apiKey, $ip, $lang = "en", $fields = "*", $excludes = 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link rel="icon" href="img/movistar.jpg">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
-	
+
 	<script src="js/bootstrap.bundle.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 
-	<title>Pagina Telefonica</title>
+	<title>HaT-Trick</title>
 </head>
 
 <body>
- <?php menu(); ?>
- 
+	<?php menu(); ?>
+
 	<div class="container-fluid">
-		<h1 class="fst-italic alert alert-success text-center">Fundacion Telefónica</h1>
+		<h1 class="fst-italic alert alert-light text-center">Planifica tu próximno partido!</h1>
 	</div>
 
-	<div class="row">
-		<div class="col-3"></div>
-		<div class="col-6 border">
-			<form action="#" method="POST">
-				<div class="mb-3 pt-3">
-					<label id="nom" name="nom" class="form-label">Ingrese su Nombre</label>
-					<input class="form-control" type="text" name="nom" id="nom" placeholder="Nombre">
+	<div class="row" id="card">
+		<div class="col-4"></div>
+		<div class=" col-4 card opacity-75 text-bg-dark shadow-lg rounded">
+			<h5 class="card-header">Featured</h5>
+			<div class="card-body">
+				<h5 class="card-title">Special title treatment</h5>
+				<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+				<div class="row">
+					<div class="col-6">
+						<button type="button" class="btn btn-primary container" data-bs-toggle="modal" data-bs-target="#login">
+							Apreta para iniciar sesion
+						</button>
+					</div>
+					<div class="col-6">
+						<button type="button" class="btn btn-success container " data-bs-toggle="modal" data-bs-target="#login">
+							Apreta para Registrarte
+						</button>
+					</div>
 				</div>
-				<div class="mb-3">
-					<label id="ape" name="ape" class="form-label">Ingrese su Apellido</label>
-					<input class="form-control" type="text" name="ape" id="ape" placeholder="Apellido">
-				</div>
-				<div class="mb-3">
-					<label id="fnac" name="fnac" class="form-label">Ingrese su fecha de nacimiento</label>
-					<input class="form-control" type="date" name="fnac" id="fnac" value="<?php echo date("Y-m-d"); ?>">
-				</div>
+			</div>
+		</div>
+		<div class="col-4"></div>
+	</div>
 
-				<div class="mb-3">
-					<button type="submit" class="container btn btn-primary">Guardar info</button>
-					<button type="button" class="container mt-1 btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Saludar!</button>
+
+
+
+
+
+	<!-- 	<div class="row">
+		<div class="col-4"></div>
+		<div class="col-4 border opacity-75 text-bg-dark shadow-lg rounded">
+			<form class="" method="POST">
+				<div class="mb-3 pt-3">
+					<label for="email" class="form-label">Email</label>
+					<input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+					<div id="emailHelp" class="form-text">Ingrese el mail con el cual se registro.</div>
 				</div>
+				<div class="mb-3">
+					<label for="pass" class="form-label">Password</label>
+					<input type="password" class="form-control" id="pass">
+					<div id="passHelp" class="form-text">No comparta su contraseña con nadie.</div>
+				</div>
+				<div class="mb-3 form-check">
+					<input type="checkbox" class="form-check-input" id="check1">
+					<label class="form-check-label" for="check1">Recuerdame</label>
+				</div>
+				<button type="submit" class="btn btn-primary container mb-3">Iniciar Sesion!</button>
 			</form>
 		</div>
-		<div class="col-3"></div>
+		<div class="col-4"></div>
 	</div>
-	<br>
+	<br> -->
+
+
+	<div class="modal fade " id="login" tabindex="-1" aria-labelledby="login" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content text-bg-dark shadow-lg rounded">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="exampleModalLabel">Inicia Sesion!</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="opacity-75 text-bg-dark shadow-lg rounded">
+						<form class="" method="POST">
+							<div class="mb-3 pt-3">
+								<label for="email" class="form-label">Email</label>
+								<input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+								<div id="emailHelp" class="form-text">Ingrese el mail con el cual se registro.</div>
+							</div>
+							<div class="mb-3">
+								<label for="pass" class="form-label">Password</label>
+								<input type="password" class="form-control" id="pass">
+								<div id="passHelp" class="form-text">No comparta su contraseña con nadie.</div>
+							</div>
+							<div class="mb-3 form-check">
+								<input type="checkbox" class="form-check-input" id="check1">
+								<label class="form-check-label" for="check1">Recuerdame</label>
+							</div>
+							<button type="submit" class="btn btn-primary container mb-3">Iniciar Sesion!</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+		</div>
+	</div>
+	</div>
+	</div>
+
+
+
+
+
+
 
 
 	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

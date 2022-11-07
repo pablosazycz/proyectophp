@@ -5,8 +5,8 @@ function menu()
 <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
   <div class="container-fluid">
     <a class="navbar-brand ms-4" href="#">
-    <img src="/docs/5.2/assets/brand/bootstrap-logo.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">   
-    HAT-TRICK        
+    <img src="img/cancharedonda.png" alt="Logo" width="50" height="50" class="align-text-center">
+    HAT-TRICK       
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
