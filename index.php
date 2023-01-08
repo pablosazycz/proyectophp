@@ -54,7 +54,7 @@ function get_geolocation($apiKey, $ip, $lang = "en", $fields = "*", $excludes = 
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="icon" href="img/movistar.jpg">
+	<link rel="icon" href="img/cancharedonda.png">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
@@ -80,13 +80,13 @@ function get_geolocation($apiKey, $ip, $lang = "en", $fields = "*", $excludes = 
 				<h5 class="card-title">Special title treatment</h5>
 				<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
 				<div class="row">
-					<div class="col-6">
+					<div class="col">
 						<button type="button" class="btn btn-primary container" data-bs-toggle="modal" data-bs-target="#login">
 							Apreta para iniciar sesion
 						</button>
 					</div>
-					<div class="col-6">
-						<button type="button" class="btn btn-success container " data-bs-toggle="modal" data-bs-target="#login">
+					<div class="col">
+						<button type="button" class="btn btn-success container " data-bs-toggle="modal" data-bs-target="#register">
 							Apreta para Registrarte
 						</button>
 					</div>
@@ -130,8 +130,9 @@ function get_geolocation($apiKey, $ip, $lang = "en", $fields = "*", $excludes = 
 	<div class="modal fade " id="login" tabindex="-1" aria-labelledby="login" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content text-bg-dark shadow-lg rounded">
-				<div class="modal-header">
-					<h1 class="modal-title fs-5" id="exampleModalLabel">Inicia Sesion!</h1>
+				<div class="row">			
+				<div class="modal-header text-end">
+					<h1 class="modal-title fs-5" id="loginLabel">Inicia Sesion!</h1>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
@@ -157,10 +158,7 @@ function get_geolocation($apiKey, $ip, $lang = "en", $fields = "*", $excludes = 
 				</div>
 			</div>
 		</div>
-		<div class="modal-footer">
-			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 		</div>
-	</div>
 	</div>
 	</div>
 
