@@ -19,18 +19,18 @@
 
     $a = 'administrador';
     $b = 'analista';
-    //paso 1) Datos de conexion.
-    $usuario = 'root';
-    $clave = '';
-    $servidor = 'localhost';
-    $basededatos = 'dbhat';
+    // //paso 1) Datos de conexion.
+    // $usuario = 'root';
+    // $clave = '';
+    // $servidor = 'localhost';
+    // $basededatos = 'dbhat';
 
-    //creamos la conexion
-    $conexion = mysqli_connect($servidor, $usuario, $clave)
-        or die('Mensaje de error');
+    // //creamos la conexion
+    // $conexion = mysqli_connect($servidor, $usuario, $clave)
+    //     or die('Mensaje de error');
 
-    // paso 3) conectamos con bd
-    $db = mysqli_select_db($conexion, $basededatos);
+    // // paso 3) conectamos con bd
+    // $db = mysqli_select_db($conexion, $basededatos);
 
     //paso 4) creamos la consulta de sql
     $consulta = 'select * from usuario';
@@ -92,7 +92,7 @@
             </div>
             <div class="col-3">
                 <button class=" btn btn-primary container-fluid" type="button">
-                    Administrador: <?php echo $cantidad_admin; ?>
+                    Administradors: <?php echo $cantidad_admin; ?>
                 </button>
             </div>
             <div class="col-3">
@@ -101,7 +101,9 @@
                 </button>
             </div>
             <div class="col-3">
-                <button class=" btn btn-danger container-fluid" type="button">Valores</button>
+                <a href="alta_usuario.php" class=" btn btn-danger container-fluid" type="button">
+                        Alta de usuario
+                </a>
             </div>
 
         </div>
@@ -132,13 +134,13 @@
                                 <td><b> <?php echo $columna['CLAVE'] ?></b></td>
                                 <td><b> <?php echo $columna['ROL'] ?></b></td>
                                 <td>
-                                    <a href="#"> Editar | </a>
-                                    <a href="#"> Eliminar </a>
+                                    <a href="editar_usuario.php?usuario=<?php echo $columna['USUARIO']; ?>"> Editar | </a>
+                                    <a href="borrar_usuario.php?usuario=<?php echo $columna['USUARIO']; ?>"> Eliminar </a>
                                 </td>
                             </tr>
 
                         <?php
-                         }
+                        }
                         ?>
                     </tbody>
                 </table>

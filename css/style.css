@@ -1,7 +1,14 @@
 body{
     background-image: url("../img/fondoestadio.jpg") ;
     background-size: cover;
+    background-repeat: no-repeat;
 }
 
+#map { height: 25rem; }
+
+#titu{
+    background-color: aliceblue;
+    text-align: center;
+}
 
 

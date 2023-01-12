@@ -40,7 +40,7 @@
         <form action="editar.php" method="POST">
         <div class="form-group">
                 <label for="usuario" style="color:green" class="font-weight-bold">Ingrese el usuario.</label>
-                <input type="text"  id="usuario" name="usuario" placeholder="Escriba el usuario" class="form-control" value="<?php echo $row['USUARIO']; ?>">
+                <input type="text"  id="usuario" name="usuario" placeholder="Escriba el usuario" class="form-control" readonly value="<?php echo $row['USUARIO']; ?>">
               </div>
               <br>
           <div class="form-group">
@@ -55,7 +55,8 @@
           <br>
           <button type="submit" class="btn btn-success container-fluid">Cargar registro</button>
           <br><br>
-
+          <button type="submit" class="btn btn-danger container-fluid" name='boton' value='0'>Modificar</button>
+            <button type="submit" class="btn btn-success container-fluid" name= 'boton' value='1'>Cancelar</button>
         </form>
       </div>
       <div class="col-4"></div>
